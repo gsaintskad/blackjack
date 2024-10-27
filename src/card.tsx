@@ -44,28 +44,28 @@ const Card = (props: CardProps) => {
       style={
         isTransforming
           ? {
-              transform: `translate(${position.x}px, ${position.y}px)`,
-              // transition: 'transform ', // Optional: smooth movement
-              position: "absolute", // Keep the component in an absolute position
-            }
+            transform: `translate(${position.x}px, ${position.y}px)`,
+            // transition: 'transform ', // Optional: smooth movement
+            position: "absolute", // Keep the component in an absolute position
+          }
           : {
-              // transition: 'transform ', // Optional: smooth movement
-              position: "absolute", // Keep the component in an absolute position
-              transform: `translate(${lastPosition.x}px, ${lastPosition.y}px)`,
-            }
+            // transition: 'transform ', // Optional: smooth movement
+            position: "absolute", // Keep the component in an absolute position
+            transform: `translate(${lastPosition.x}px, ${lastPosition.y}px)`,
+          }
       }
       onClick={(e) => {
         e.stopPropagation();
-        const rect=e.currentTarget.getBoundingClientRect();
-        setClick({x:rect.x-e.screenX,y:rect.y-e.screenY});
-        console.log("click :",click)
-        setLastPosition({ x: e.clientX, y: e.clientY });
+        const rect = e.currentTarget.getBoundingClientRect();
+        setClick({x: rect.x - e.screenX, y: rect.y - e.screenY});
+        console.log("click :", click)
+        setLastPosition({x: e.clientX, y: e.clientY});
         console.log(lastPosition);
         setIsTransforming(!isTransforming);
       }}
     >
       <h1
-        className={"text-3xl flex justify-start"}
+        className={"text-4xl flex justify-start"}
         style={{
           color:
             props.suit === en.CardSuit.Hearts ||
@@ -74,10 +74,10 @@ const Card = (props: CardProps) => {
               : "black",
         }}
       >
-        {props.suit + " " + props.value}
+        {props.suit}
       </h1>
       <h1
-        className={"text-3xl flex justify-start rotate-180"}
+        className={"text-7xl flex justify-center items-center"}
         style={{
           color:
             props.suit === en.CardSuit.Hearts ||
@@ -86,7 +86,19 @@ const Card = (props: CardProps) => {
               : "black",
         }}
       >
-        {props.suit + " " + props.value}
+        {props.value}
+      </h1>
+      <h1
+        className={"text-4xl flex justify-start rotate-180"}
+        style={{
+          color:
+            props.suit === en.CardSuit.Hearts ||
+            props.suit === en.CardSuit.Diamonds
+              ? "red"
+              : "black",
+        }}
+      >
+        {props.suit}
       </h1>
     </div>
   );

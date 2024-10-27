@@ -8,6 +8,10 @@ function App() {
       <Card suit={en.CardSuit.Spades} value={en.CardValue.Ace} />
       <Card suit={en.CardSuit.Diamonds} value={en.CardValue.Ace} />
       <Card suit={en.CardSuit.Clubs} value={en.CardValue.Ace} />
+      <Card suit={en.CardSuit.Clubs} value={en.CardValue.King} />
+      <Card suit={en.CardSuit.Diamonds} value={en.CardValue.Queen} />
+      <Card suit={en.CardSuit.Diamonds} value={en.CardValue.Seven} />
+      <Card suit={en.CardSuit.Spades} value={en.CardValue.Six} />
     </div>
   );
 }
