@@ -1,10 +1,13 @@
-
+import Card from "./card.tsx";
+import * as en from "./enums.ts";
 
 function App() {
   return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1>MVP</h1>
-  
+    <div className="h-screen bg-gray-100">
+      <Card suit={en.CardSuit.Hearts} value={en.CardValue.Ace} />
+      <Card suit={en.CardSuit.Spades} value={en.CardValue.Ace} />
+      <Card suit={en.CardSuit.Diamonds} value={en.CardValue.Ace} />
+      <Card suit={en.CardSuit.Clubs} value={en.CardValue.Ace} />
     </div>
   );
 }
