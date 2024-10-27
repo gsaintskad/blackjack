@@ -14,9 +14,16 @@ const Card = (props: CardProps) => {
   const [isTransforming, setIsTransforming] = useState(false);
   const [position, setPosition] = useState<Position>({ x: 0, y: 0 });
   const [lastPosition, setLastPosition] = useState<Position>({ x: 0, y: 0 });
+  const [click, setClick] = useState<Position>({x:0,y:0});
   // Event handler with type annotation for the MouseEvent
   const handleMouseMove = (event: MouseEvent) => {
-    setPosition({ x: event.clientX, y: event.clientY });
+    event.preventDefault();
+    event.stopPropagation();
+    const newPosition:Position = {
+      x:event.clientX + click.x,
+      y:event.clientY + click.y,
+    }
+    setPosition(newPosition);
   };
 
   useEffect(() => {
@@ -49,6 +56,9 @@ const Card = (props: CardProps) => {
       }
       onClick={(e) => {
         e.stopPropagation();
+        const rect=e.currentTarget.getBoundingClientRect();
+        setClick({x:rect.x-e.screenX,y:rect.y-e.screenY});
+        console.log("click :",click)
         setLastPosition({ x: e.clientX, y: e.clientY });
         console.log(lastPosition);
         setIsTransforming(!isTransforming);
